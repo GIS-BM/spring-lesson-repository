@@ -38,7 +38,7 @@ public class MemberDao {
     if (pstmt != null)
       pstmt.close();
     if (con != null)
-      con.close(); // 커넥션을 소멸시키는 것이 아니라 DBCP에 커넥션을 반납한다.ㅔ;
+      con.close(); // 커넥션을 소멸시키는 것이 아니라 DBCP에 커넥션을 반납한다.;
   }
 
   public MemberVo findMemberById(String memberId) throws SQLException {
