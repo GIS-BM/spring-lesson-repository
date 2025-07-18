@@ -2,7 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.kosa.myproject.mapper.MemberMapper">
 	<select id="getTotalMemberCount" resultType="int">
-		select count(*) from spring_member;
+		select count(*) from spring_member
 	</select>
-	
+	<insert id="register" parameterType="org.kosa.myproject.domain.Member">
+		insert into spring_member(id,password,name,address)
+		values(#{id},#{password},#{name},#{address})
+	</insert>
+	<select id="findMemberById" parameterType="string" resultType="org.kosa.myproject.domain.Member">
+	<!-- parameterType : 메서드 입력값, resultType : 메서드 리턴값 -->
+		select id,password,name,address from spring_member where id=#{id}
+	</select>
+	<select id="findAllMemberList" resultType="org.kosa.myproject.domain.Member">
+		select id,password,name,address from spring_member
+	</select>
+	<update id="updateMember" parameterType="org.kosa.myproject.domain.Member">
+		update spring_member set
+		password=#{password}, name=#{name}, address=#{address}
+		where id=#{id}
+	</update>
+	<delete id="deleteMember" parameterType="string">
+		delete from spring_member where id=#{id}
+	</delete>
 </mapper>
