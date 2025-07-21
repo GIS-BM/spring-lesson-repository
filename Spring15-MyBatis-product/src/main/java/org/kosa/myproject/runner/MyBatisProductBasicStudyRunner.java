@@ -1,26 +1,25 @@
-package org.kosa.myproject;
+package org.kosa.myproject.runner;
 
-import java.math.BigDecimal;
-import java.util.List;
-
-import org.kosa.myproject.domain.Product;
 import org.kosa.myproject.mapper.ProductMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 
-@Component
-public class MyBatisProductStudyRunner implements CommandLineRunner {
-  private static final Logger logger = LoggerFactory.getLogger(MyBatisProductStudyRunner.class);
+//@Component
+//@Order(2) // Runner가 여러개 있을 때 우선순위를 줄 수 있다.
+// 기본 MyBatis 예저는 마무리 되었으므로 실행에서 일단 제외 시킨다.
+public class MyBatisProductBasicStudyRunner implements CommandLineRunner {
+  private static final Logger logger = LoggerFactory.getLogger(MyBatisProductBasicStudyRunner.class);
   private final ProductMapper productMapper;
 
-  public MyBatisProductStudyRunner(ProductMapper productMapper) {
+  public MyBatisProductBasicStudyRunner(ProductMapper productMapper) {
     this.productMapper = productMapper;
   }
 
   @Override
   public void run(String... args) throws Exception {
+    logger.debug("className {} run.. DI {}",getClass(),productMapper);
+    
 //    int totalProductCount = productMapper.getTotalProductCount();
 //    logger.debug("총 상품수:{}", totalProductCount);
     /*
@@ -58,12 +57,10 @@ public class MyBatisProductStudyRunner implements CommandLineRunner {
 //    logger.debug("등록된 상품의 productId 정보 {}", newProduct.getProductId()); // 12
     
     // 가격대별 검색( 낮은 가격 이상 ~ 높은 가격 이하 )
-    BigDecimal minPrice = new BigDecimal("500000");
-    BigDecimal maxPrice = new BigDecimal("1000000");
-    List<Product> list = productMapper.findByPriceRange(minPrice,maxPrice);
-    for(Product p : list) 
-      logger.debug("상품 정보 {}", p);
+//    BigDecimal minPrice = new BigDecimal("500000");
+//    BigDecimal maxPrice = new BigDecimal("1000000");
+//    List<Product> list = productMapper.findByPriceRange(minPrice,maxPrice);
+//    for(Product p : list) 
+//      logger.debug("상품 정보 {}", p);
   }
 }
-
-
