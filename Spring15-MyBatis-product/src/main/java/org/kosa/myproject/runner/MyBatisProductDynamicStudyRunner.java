@@ -14,7 +14,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
-@Order(1) // Runner가 여러개 있을 때 우선순위를 줄 수 있다.
+//@Order(1) // Runner가 여러개 있을 때 우선순위를 줄 수 있다.
 public class MyBatisProductDynamicStudyRunner implements CommandLineRunner {
   private static final Logger logger = LoggerFactory.getLogger(MyBatisProductDynamicStudyRunner.class);
   // ProductMapper를 DI 받는다. : private final field, contruction injection
